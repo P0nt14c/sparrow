@@ -12,9 +12,21 @@ content-type
 """
 
 class response:
+    """ Response Class
+
+    Attributes
+    ------
+    code
+        the response code and reason phrase
+    version
+        http version string
+    headers
+        the http headers for the response
+    body
+        the body for the response
+    """
     code = str
     version = str
-    host = str
     headers = dict
     body = str
 
@@ -36,6 +48,13 @@ class response:
 
 # builds a HTTP 200 reponse code
 def return_200() -> response:
+    """ Creates a 200 Response 
+
+    Returns
+    -------
+    response
+        containing 200 HTTP Code
+    """ 
     resp_headers = dict()
     resp_headers["Server: "] = "Sparrow"
     resp_headers["Date: "] = datetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S %Z")
@@ -47,6 +66,13 @@ def return_200() -> response:
 
 # builds a HTTP 400 repsonse code
 def return_400() -> response:
+    """ Creates a 400 Response 
+
+    Returns
+    -------
+    response
+        containing 400 HTTP Code
+    """
     resp_headers = dict()
     resp_headers["Server: "] = "Sparrow"
     resp_headers["Date: "] = datetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S %Z")
@@ -58,6 +84,13 @@ def return_400() -> response:
 
 # builds a HTTP 500 response code
 def return_500() -> response:
+    """ Creates a 500 Response 
+
+    Returns
+    -------
+    response
+        containing 500 HTTP Code
+    """
     resp_headers = dict()
     resp_headers["Server: "] = "Sparrow"
     resp_headers["Date: "] = datetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S %Z")

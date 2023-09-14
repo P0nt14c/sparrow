@@ -4,6 +4,24 @@
 
 
 class Request:
+    """ Request Class
+
+    Attributes
+    ------
+    method
+        the reqeust method
+    page 
+        the requested page
+    version
+        http version string
+    host
+        the requested server
+    headers
+        the http headers for the response
+    body
+        the body for the response
+    """
+
     method = str
     page = str
     version = str
