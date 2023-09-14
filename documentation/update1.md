@@ -3,8 +3,9 @@
 Author: Jason Howe
 Date: 9/15/2023
 
-GITHUB: 
+GITHUB: https://github.com/P0nt14c/sparrow.git
 
+Time spent this week: 6 hours
 
 ## Progress
 - Created Repository

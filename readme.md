@@ -14,7 +14,7 @@ Clone the repository done </br>
 
 
 ## Usage 
-Tostart the webserver run: </br>
+To start the webserver run: </br>
 `python3 sparrow.py`
 
 ### Request Checking
