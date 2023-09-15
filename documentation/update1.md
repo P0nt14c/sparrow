@@ -19,10 +19,7 @@ Time spent this week: 6 hours
     - page
     - version
 - Created Headers
-- Main Control Logic
-  - Open File
-  - Read File
-  - Parse String
+
 
 
 ## Challenges
@@ -47,3 +44,7 @@ Time spent this week: 6 hours
   - Build response headers
   - Build entity headers
 - Request Parsing
+- Main Control Logic
+  - Open File
+  - Read File
+  - Parse String
