@@ -25,28 +25,67 @@ class Request:
     method = str
     page = str
     version = str
-    host = str
     headers = dict
     body = str
 
 
-    def __init__(self, method, page, version, host, headers, body):
+    def __init__(self, method: str, page: str, version: str, headers: list, body: str):
         self.method = method
         self.page = page
         self.version = version
-        self.host = host
         self.headers = headers
         self.body = body
+        return self
 
 
     def __str__(self):
         req = self.method + " " + self.page + " " + self.version + "\r\n"
-        req += "Host: " + self.host + "\r\n"
         for key in self.headers:
             req += key.upper() + ": " + self.headers[key] + "\r\n"
         req += "\r\n"
         req += self.body
         return req
+    
+
+def parse(req: str) -> (bool, Request):
+    req_lines = req.split("\r\n")
+    
+
+    method = ""
+    page = ""
+    version = ""
+    headers = list()
+    b_data = ""
+
+    i = 0 
+    body = False
+    for line in req_lines:
+        if i == 0:
+            try: 
+                method = line.split(" ")[0]
+                page = line.split(" ")[1]
+                version = line.split(" ")[2]
+            except Exception:
+                return (False, None)
+        elif line == "\r\n":
+            body = True
+        elif not body:
+            head = line.split(":")
+            headers[head[0]] = head[1]
+        elif body:
+            b_data += line
+
+        i += 1
+
+    request = Request(
+        method,
+        page,
+        version,
+        headers,
+        body
+    )
+    
+    return (True, request)
 
 
 def validate_method(method: str) -> bool:
