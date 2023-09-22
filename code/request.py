@@ -47,7 +47,7 @@ class Request:
         return req
     
 
-def parse(req: str) -> (bool, Request):
+def parse(req: str) -> (int, Request):
     req_lines = req.split("\r\n")
     
 
@@ -66,7 +66,7 @@ def parse(req: str) -> (bool, Request):
                 page = line.split(" ")[1]
                 version = line.split(" ")[2]
             except Exception:
-                return (False, None)
+                return (1, None)
         elif line == "\r\n":
             body = True
         elif not body:
@@ -85,7 +85,7 @@ def parse(req: str) -> (bool, Request):
         body
     )
     
-    return (True, request)
+    return (0, request)
 
 
 def validate_method(method: str) -> bool:
