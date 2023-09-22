@@ -152,3 +152,20 @@ def validate_page(page: str, pages: list) -> bool:
         return False
     
 
+def parse_get():
+    pass
+
+def parse_post():
+    pass
+
+
+def parse_put():
+    pass
+
+
+def parse_delete():
+    pass
+
+
+def parse_head():
+    pass
