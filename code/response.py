@@ -95,7 +95,7 @@ def return_500() -> response:
     resp_headers["Server: "] = "Sparrow"
     resp_headers["Date: "] = datetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S %Z")
     resp_headers["Content-type: "] = "text/plain"
-    body = "Sparrow Bad Request"
+    body = "Sparrow Internal Server Error"
     resp = response("500 Internal Server Error", "HTTP/1.1", resp_headers, body)
     return resp
 

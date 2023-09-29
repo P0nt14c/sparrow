@@ -35,7 +35,6 @@ class Request:
         self.version = version
         self.headers = headers
         self.body = body
-        return self
 
 
     def __str__(self):
@@ -152,20 +151,20 @@ def validate_page(page: str, pages: list) -> bool:
         return False
     
 
-def parse_get():
-    pass
+def parse_get(req: Request) -> int:
+    return 2
 
-def parse_post():
-    pass
-
-
-def parse_put():
-    pass
+def parse_post(req: Request) -> int:
+    return 0
 
 
-def parse_delete():
-    pass
+def parse_put(req: Request) -> int:
+    return 0
 
 
-def parse_head():
-    pass
+def parse_delete(req: Request) -> int:
+    return 0
+
+
+def parse_head(req: Request) -> int:
+    return 0

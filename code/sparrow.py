@@ -22,23 +22,26 @@ if __name__ == "__main__":
     
     if req.method == "GET":
         err = request.parse_get(req)
-    elif req.mtehod == "POST":
+    elif req.method == "POST":
         err = request.parse_post(req)
-    elif req.mtehod == "PUT":
+    elif req.method == "PUT":
         err = request.parse_put(req)
-    elif req.mtehod == "DELETE":
+    elif req.method == "DELETE":
         err = request.parse_delete(req)
-    elif req.mtehod == "HEAD":
+    elif req.method == "HEAD":
         err = request.parse_head(req)
+    else:
+        err = 1
     
+
     if err == 0:
-        res = request.return_200()
+        res = response.return_200()
         print(res)
     elif err == 1:
-        res = request.return_400()
+        res = response.return_400()
         print(res)
     elif err == 2:
-        res = request.return_500()
+        res = response.return_500()
         print(res)
 
 
