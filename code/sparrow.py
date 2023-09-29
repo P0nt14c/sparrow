@@ -52,7 +52,30 @@ def parser_handler(req: request.Request) -> response.response:
         return
 
 
+def usage():
+    print("Sparrow Web Server\n"\
+          "To use file mode: python3 sparrow.py <path/to/file>\n"\
+          "To use HTTP Server mode: python3 sparrow.py <ip> <port>\n"
+          "To use HTTPS Server mode: python3 sparrow.py <ip> <port> <pub key> <priv key>"
+          )
+
+
 if __name__ == "__main__":
+    # check sys arg length to get mode
+    if len(sys.argv) == 2:
+        print("file mode")
+        sys.exit(0)
+    if len(sys.argv) == 3:
+        print("http mode")
+        sys.exit(0)
+    elif len(sys.argv) == 5:
+        print("https mode")
+        sys.exit(0)
+    else:
+        usage()
+        sys.exit(0)
+
+
     request_file = sys.argv[1]
     with open(request_file, "r") as rfile:
         req_str = rfile.read()
