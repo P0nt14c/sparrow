@@ -5,25 +5,26 @@
 import sys
 import request
 import response
+import logger
 
 def parser_handler(req: request.Request) -> response.response:
 
     ver_check = request.validate_version(req.version)
     if ver_check != True:
         res = response.return_400()
-        print(res) # TODO: switch to log
+        logger.log("BAD", req, res)
         return
 
     page_check = request.validate_page(req.page)
     if page_check != True:
         res = response.return_400()
-        print(res) # TODO: switch to log
+        logger.log("BAD", req, res)
         return
 
     method_check = request.validate_method(req.method)
     if method_check != True:
         res = response.return_400()
-        print(res) # TODO: switch to log
+        logger.log("BAD", req, res)
         return
 
     if req.method == "GET":
@@ -39,15 +40,15 @@ def parser_handler(req: request.Request) -> response.response:
 
     if err == 0:
         res = response.return_200()
-        print(res) # TODO: switch to log
+        logger.log("GOOD", req, res)
         return
     elif err == 1:
         res = response.return_400()
-        print(res) # TODO: switch to log
+        logger.log("BAD", req, res)
         return
     elif err == 2:
         res = response.return_500()
-        print(res) # TODO: switch to log
+        logger.log("BAD", req, res)
         return
 
 
@@ -60,7 +61,7 @@ if __name__ == "__main__":
     err, req = request.parse(req_str)
     if err == 1:
         res = response.return_400()
-        print(res) # TODO: switch to log
+        logger.log("BAD", req, res)
         sys.exit(0)
     
     parser_handler(req)
