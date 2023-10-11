@@ -9,6 +9,8 @@ VERBOSE = 0
 IP = "127.0.0.1"
 PORT = 4862 
 MODE = 0
+CERTFILE = ""
+KEYFILE = ""
 
 class Server_Mode(Enum):
     FILE = 1
