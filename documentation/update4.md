@@ -1,11 +1,11 @@
 # Update 2
 
 Author: Jason Howe
-Date: 9/29/2023
+Date: 10/11/2023
 
 GITHUB: https://github.com/P0nt14c/sparrow.git
 
-Time spent this week: 6 hours
+Time spent this week: 3 hours
 
 ## Progress
 - Add Certs and Sockets
