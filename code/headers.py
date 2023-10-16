@@ -8,7 +8,7 @@ GENERAL_HEADERS = [
     "Date",
     "Pragma",
     "Trailer",
-    "Trasnfer-Encoding",
+    "Transfer-Encoding",
     "Upgrade",
     "Via",
     "Warning"
@@ -84,6 +84,65 @@ def validate_request_headers(headers: dict) -> bool:
             discard_headers[hname] = headers[hname]
 
 
+def validate_general_headers(gheaders: dict):
+    #cache control
+    if "Cache-Control" in gheaders:
+        if gheaders["Cache-Control"] != "no-cache":
+            # do something to return error code here
+            pass 
+    
+    # Connection
+    if "Connection" in gheaders:
+        if gheaders["Connection"] != "close":
+            # do something to return error code here
+            pass 
+    
+    # Date
+    if "Date" in gheaders:
+        # maybe do something to check if request type is POST or PUT 
+        pass
 
+    # Pragma
+    if "Pragma" in gheaders:
+        if gheaders["Cache-Control"] != "no-cache":
+            # do something to return error code here
+            pass 
+
+    # Trailer // TODO implement a check for trailers
+    if "Trailer" in gheaders:
+        pass
+
+    # Transfer-Encoding
+    if "Transfer-Encoding" in gheaders:
+        if gheaders["Transfer-Encoding"] == "chunked":
+            # do something here // return 501 not implemented
+            pass
+        elif gheaders["Transfer-Encoding"] == "identity":
+            # do something here // return 501 not implemented
+            pass
+        elif gheaders["Transfer-Encoding"] == "gzip":
+            # do something here // return 501 not implemented
+            pass
+        elif gheaders["Transfer-Encoding"] == "compress":
+            # do something here // return 501 not implemented
+            pass
+        elif gheaders["Transfer-Encoding"] == "deflate":
+            # do something here // return 501 not implemented
+            pass
+
+    # Upgrade
+    if "Upgrade" in gheaders:
+        # do something
+        pass
+
+    # Via
+    if "Via" in gheaders:
+        # do something
+        pass
+
+    # Warning
+    if "Warning" in gheaders:
+        # do something
+        pass
 
     
