@@ -1,18 +1,21 @@
 # Update 5
 
 Author: Jason Howe
-Date: 10/11/2023
+Date: 10/16/2023
 
 GITHUB: https://github.com/P0nt14c/sparrow.git
 
 Time spent this week: 3 hours
 
 ## Progress
-- Add Certs and Sockets
+- Add Headers Lists
+- Add Header Parsing
+- Add General Header Parsing
 
 
 ## Challenges
-- Busy w/ midterms and work due before break
+- Parents visited for Brick City
+- Midterm week pt2
 
 
 ## Blockers
