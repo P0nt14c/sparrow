@@ -63,7 +63,7 @@ ENTITY_HEADERS = [
 ]
 
 
-def validate_request_headers(headers: dict) -> bool:
+def parse_headers(headers: dict) -> bool:
     
 
     # header dicts
@@ -145,4 +145,118 @@ def validate_general_headers(gheaders: dict):
         # do something
         pass
 
+
+def validate_request_headers(rheaders: dict):
+    # check request headers
     
+    # accept
+    if "Accept" in rheaders:
+        validate_accept_header(rheaders["Accept"])
+
+    # charset
+    if "Accept-Charset" in rheaders:
+        validate_charset_header(rheaders["Accept-Charset"])
+    
+    # encoding
+    if "Accept-Encoding" in rheaders:
+        validate_encoding_header(rheaders["Accpet-Encoding"])
+
+    # lanuage
+    if "Accept-Language" in rheaders:
+        validate_language_header(rheaders["Accept-Language"])
+
+    # auth
+    if "Authorization" in rheaders:
+        # deals with authication
+        # return a 400
+        pass
+
+    # expect
+    if "Expect" in rheaders:
+        # specifies expected server behavior. 
+        # return 400
+        pass
+
+    if "From" in rheaders:
+        # most likely don't need to do anything with this header
+        # value is an email address
+        pass
+
+    if "Host" in rheaders:
+        # most likely don't need to do anything with this header
+        # value is an IP/Hostname and Port
+        pass
+
+    if "If-Match" in rheaders:
+        # deals with caching
+        # return 400
+        pass
+
+    if "If-Modified-Since" in rheaders:
+        # check HTTP-Date against last modification date
+        # do something if modified
+        pass
+
+    if "If-None-Match" in rheaders:
+        # deals with caching
+        # return 400
+        pass
+
+    if "If-Range" in rheaders:
+        # deals with caching
+        # return 400
+        pass
+
+    if "If-Unmodified-Since" in rheaders:
+        # check HTTP-Date against last modification date
+        # do something if modified
+        pass
+
+    if "Max-Forwards" in rheaders:
+        # properly respond to TRACE or OPTIONS request
+        # ignore for rest
+        pass
+
+    if "Pragma" in rheaders:
+        # do something
+        pass
+
+    if "Proxy-Authorization" in rheaders:
+        # deals with authication
+        # return a 400
+        pass
+
+    if "Range" in rheaders:
+        # do something
+        pass
+
+    if "Referer" in rheaders:
+        # do something
+        pass
+
+    if "TE" in rheaders:
+        # do something
+        # something with trailers
+        pass
+
+    if "User-Agent" in rheaders:
+        # do something
+        # don't really have to parse these. 
+        # could implement anti-scripitng controls
+        pass
+         
+    pass
+
+
+def validate_accept_header(accept):
+    pass
+
+
+def validate_charset_header():
+    pass
+
+def validate_language_header():
+    pass
+
+def validate_encoding_header():
+    pass
