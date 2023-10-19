@@ -155,7 +155,9 @@ def validate_request_headers(rheaders: dict):
 
     # charset
     if "Accept-Charset" in rheaders:
-        validate_charset_header(rheaders["Accept-Charset"])
+        # do nothing
+        # this header is not widely used
+        pass
     
     # encoding
     if "Accept-Encoding" in rheaders:
@@ -249,14 +251,31 @@ def validate_request_headers(rheaders: dict):
 
 
 def validate_accept_header(accept):
-    pass
+    valid_accept_types = [
+        "text/plain",
+        "text/html",
+        "application/json"
+    ]
+    if accept not in valid_accept_types:
+        # do something
+        # return error code
+        pass
+    
+    
+def validate_language_header(language):
+    valid_langauge_type = ["en-US"]
+    if language not in valid_langauge_type:
+        # do somethihng
+        # return error code
+        pass
 
-
-def validate_charset_header():
-    pass
-
-def validate_language_header():
-    pass
-
-def validate_encoding_header():
-    pass
+def validate_encoding_header(encoding):
+    # we don't support any encodings 
+    valid_encoding_types = []
+    if encoding not in valid_encoding_types:
+        # do something
+        # return error code
+        pass
+    else:
+        # do encoding checks here
+        pass
