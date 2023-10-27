@@ -1,0 +1,8 @@
+---
+
+- name: SPARROW
+  hosts: sparrow
+  roles:
+    - deploy_sparrow
+  tags:
+    - sparrow

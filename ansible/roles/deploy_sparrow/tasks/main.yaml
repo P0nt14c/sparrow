@@ -1,0 +1,11 @@
+---
+
+- name: SPARROW | Copy Source Code
+  ansible.builtin.copy: 
+    src: ../../../../code/
+    dest: ~
+    directory_mode: true
+    mode: 0777
+  
+- name: SPARROW | Run Server
+  ansible.builtin.shell: python3 ~/code/sparrow.py
