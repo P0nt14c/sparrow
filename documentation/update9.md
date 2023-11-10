@@ -1,11 +1,11 @@
-# Update 6
+# Update 9
 
 Author: Jason Howe
 Date: 11/10/2023
 
 GITHUB: https://github.com/P0nt14c/sparrow.git
 
-Time spent this week: 3 hours
+Time spent this week: 2 hours
 
 ## Progress
 - Wrote docker containers to deploy Sparrow
