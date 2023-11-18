@@ -8,10 +8,9 @@ GITHUB: https://github.com/P0nt14c/sparrow.git
 Time spent this week: 2 hours
 
 ## Progress
-- Request Parsing
-  - Add response enum into response generation
-- update imports in sparrow
-- update requests method
+- switched to methods folder
+- implemented get and head methods
+
 
 ## Challenges
 - projects/papers for other classes
@@ -24,6 +23,8 @@ Time spent this week: 2 hours
 
 
 ## Goals For Next Week
-
-
+- Request Parsing
+  - Add response enum into response generation
+- implement put,post,delete
+- PHP stuffs
 
