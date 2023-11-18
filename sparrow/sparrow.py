@@ -9,38 +9,39 @@ import request
 import response
 import logger
 import config
+from methods import get, delete, head, post, put
 
 
 def parser_handler(req: request.Request) -> response.response:
 
     ver_check = request.validate_version(req.version)
     if ver_check != True:
-        res = response.return_400()
+        res = response.return_505()
         logger.log("BAD", req, res)
         return
 
     page_check = request.validate_page(req.page)
     if page_check != True:
-        res = response.return_400()
+        res = response.return_404()
         logger.log("BAD", req, res)
         return
 
     method_check = request.validate_method(req.method)
     if method_check != True:
-        res = response.return_400()
+        res = response.return_501()
         logger.log("BAD", req, res)
         return
 
     if req.method == "GET":
-        err = request.parse_get(req)
+        err = get.parse(req)
     elif req.method == "POST":
-        err = request.parse_post(req)
+        err = post.parse(req)
     elif req.method == "PUT":
-        err = request.parse_put(req)
+        err = put.parse(req)
     elif req.method == "DELETE":
-        err = request.parse_delete(req)
+        err = delete.parse(req)
     elif req.method == "HEAD":
-        err = request.parse_head(req)
+        err = head.parse(req)
 
     if err == 0:
         res = response.return_200()

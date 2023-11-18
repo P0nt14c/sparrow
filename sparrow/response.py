@@ -11,7 +11,7 @@ server
 content-type
 """
 
-class response:
+class Response:
     """ Response Class
 
     Attributes
@@ -47,7 +47,7 @@ class response:
 
 
 # builds a HTTP 200 reponse code
-def return_200() -> response:
+def return_200() -> Response:
     """ Creates a 200 Response 
 
     Returns
@@ -60,27 +60,28 @@ def return_200() -> response:
     resp_headers["Date: "] = datetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S %Z")
     resp_headers["Content-type: "] = "text/plain"
     body = "Sparrow OK"
-    resp = response("200 OK", "HTTP/1.1", resp_headers, body)
+    resp = Response("200 OK", "HTTP/1.1", resp_headers, body)
     return resp
 
-def return_201() -> response:
-    """ Creates a 200 Response 
+def return_201() -> Response:
+    """ Creates a 201 Response 
 
     Returns
     -------
     response
-        containing 200 HTTP Code
+        containing 201 HTTP Code
     """ 
     resp_headers = dict()
     resp_headers["Server: "] = "Sparrow"
     resp_headers["Date: "] = datetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S %Z")
     resp_headers["Content-type: "] = "text/plain"
     body = "Sparrow OK"
-    resp = response("201 Created", "HTTP/1.1", resp_headers, body)
+    resp = Response("201 Created", "HTTP/1.1", resp_headers, body)
     return resp
+
 
 # builds a HTTP 400 repsonse code
-def return_400() -> response:
+def return_400() -> Response:
     """ Creates a 400 Response 
 
     Returns
@@ -93,62 +94,64 @@ def return_400() -> response:
     resp_headers["Date: "] = datetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S %Z")
     resp_headers["Content-type: "] = "text/plain"
     body = "Sparrow Bad Request"
-    resp = response("400 Bad Request", "HTTP/1.1", resp_headers, body)
+    resp = Response("400 Bad Request", "HTTP/1.1", resp_headers, body)
     return resp
 
-# builds a HTTP 400 repsonse code
-def return_403() -> response:
-    """ Creates a 400 Response 
+# builds a HTTP 403 repsonse code
+def return_403() -> Response:
+    """ Creates a 403 Response 
 
     Returns
     -------
     response
-        containing 400 HTTP Code
+        containing 403 HTTP Code
     """
     resp_headers = dict()
     resp_headers["Server: "] = "Sparrow"
     resp_headers["Date: "] = datetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S %Z")
     resp_headers["Content-type: "] = "text/plain"
     body = "Sparrow OK. Client Bad Request"
-    resp = response("403 Forbidden", "HTTP/1.1", resp_headers, body)
+    resp = Response("403 Forbidden", "HTTP/1.1", resp_headers, body)
     return resp
 
-# builds a HTTP 400 repsonse code
-def return_404() -> response:
-    """ Creates a 400 Response 
+
+# builds a HTTP 404 repsonse code
+def return_404() -> Response:
+    """ Creates a 404 Response 
 
     Returns
     -------
     response
-        containing 400 HTTP Code
+        containing 404 HTTP Code
     """
     resp_headers = dict()
     resp_headers["Server: "] = "Sparrow"
     resp_headers["Date: "] = datetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S %Z")
     resp_headers["Content-type: "] = "text/plain"
     body = "Sparrow OK. Client Bad Request"
-    resp = response("404 Not Found", "HTTP/1.1", resp_headers, body)
+    resp = Response("404 Not Found", "HTTP/1.1", resp_headers, body)
     return resp
 
-# builds a HTTP 400 repsonse code
-def return_411() -> response:
-    """ Creates a 400 Response 
+# builds a HTTP 411 repsonse code
+def return_411() -> Response:
+    """ Creates a 4011 Response 
 
     Returns
     -------
     response
-        containing 400 HTTP Code
+        containing 411 HTTP Code
     """
     resp_headers = dict()
     resp_headers["Server: "] = "Sparrow"
     resp_headers["Date: "] = datetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S %Z")
     resp_headers["Content-type: "] = "text/plain"
     body = "Sparrow OK. Client Bad Request"
-    resp = response("411 Length Required", "HTTP/1.1", resp_headers, body)
+    resp = Response("411 Length Required", "HTTP/1.1", resp_headers, body)
     return resp
+
 
 # builds a HTTP 500 response code
-def return_500() -> response:
+def return_500() -> Response:
     """ Creates a 500 Response 
 
     Returns
@@ -161,40 +164,40 @@ def return_500() -> response:
     resp_headers["Date: "] = datetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S %Z")
     resp_headers["Content-type: "] = "text/plain"
     body = "Sparrow Internal Server Error"
-    resp = response("500 Internal Server Error", "HTTP/1.1", resp_headers, body)
+    resp = Response("500 Internal Server Error", "HTTP/1.1", resp_headers, body)
     return resp
 
 
-# builds a HTTP 500 response code
-def return_501() -> response:
-    """ Creates a 500 Response 
+# builds a HTTP 501 response code
+def return_501() -> Response:
+    """ Creates a 501 Response 
 
     Returns
     -------
     response
-        containing 500 HTTP Code
+        containing 501 HTTP Code
     """
     resp_headers = dict()
     resp_headers["Server: "] = "Sparrow"
     resp_headers["Date: "] = datetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S %Z")
     resp_headers["Content-type: "] = "text/plain"
     body = "Sparrow Internal Server Error"
-    resp = response("501 Not Implemented", "HTTP/1.1", resp_headers, body)
+    resp = Response("501 Not Implemented", "HTTP/1.1", resp_headers, body)
     return resp
 
-# builds a HTTP 500 response code
-def return_505() -> response:
-    """ Creates a 500 Response 
+# builds a HTTP 505 response code
+def return_505() -> Response:
+    """ Creates a 505 Response 
 
     Returns
     -------
     response
-        containing 500 HTTP Code
+        containing 505 HTTP Code
     """
     resp_headers = dict()
     resp_headers["Server: "] = "Sparrow"
     resp_headers["Date: "] = datetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S %Z")
     resp_headers["Content-type: "] = "text/plain"
     body = "Sparrow Internal Server Error"
-    resp = response("505 HTTP Version Not Supported", "HTTP/1.1", resp_headers, body)
+    resp = Response("505 HTTP Version Not Supported", "HTTP/1.1", resp_headers, body)
     return resp

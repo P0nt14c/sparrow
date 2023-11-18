@@ -151,20 +151,3 @@ def validate_page(page: str, pages: list) -> bool:
         return False
     
 
-def parse_get(req: Request) -> int:
-    return 2
-
-def parse_post(req: Request) -> int:
-    return 0
-
-
-def parse_put(req: Request) -> int:
-    return 0
-
-
-def parse_delete(req: Request) -> int:
-    return 0
-
-
-def parse_head(req: Request) -> int:
-    return 0
