@@ -24,11 +24,11 @@ def create_secure_socket() -> socket.socket:
     conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     context = ssl.SSLContext()
     context.verify_mode=ssl.CERT_NONE
-    context.load_cert_chain(config.CERTFILE, config.KEYFILE, password=None)
-    conn = context.wrap_socket(conn, server_side=True)
-    conn.bind((config.IP, config.PORT))
-    conn.listen(10)
-    return conn
+    context.load_cert_chain(certfile=config.CERTFILE, keyfile=config.KEYFILE, password=None)
+    s_conn = context.wrap_socket(conn, server_side=True)
+    s_conn.bind((config.IP, config.PORT))
+    s_conn.listen(10)
+    return s_conn
 
 
 def recieve(conn: socket.socket) -> str:

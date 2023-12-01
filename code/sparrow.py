@@ -130,7 +130,7 @@ def handle_client(conn: socket):
     print("[+] Request Received")
     res = parser_handler(req)
     print("[+] Response Built")
-    print(res)
+    # print(res)
     comms.send(conn, res.__str__())
     print("[+] Response Sent")
     return

