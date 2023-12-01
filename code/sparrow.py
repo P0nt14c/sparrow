@@ -25,7 +25,7 @@ def parser_handler(req: request.Request) -> response.Response:
     print("[+] Version Check Passed")
 
     if req.method.upper() in ["GET", "HEAD", "DELETE"]:
-        page_check = request.validate_page(req.page)
+        page_check = request.validate_page(req.page.split("?")[0])
         if page_check != True:
             res = response.return_404()
             logger.log("BAD", req, res)
@@ -41,6 +41,7 @@ def parser_handler(req: request.Request) -> response.Response:
 
     if req.method == "GET":
         res = get.parse(req)
+        print(res)
     elif req.method == "POST":
         res = post.parse(req)
     elif req.method == "PUT":
@@ -130,7 +131,7 @@ def handle_client(conn: socket):
     print("[+] Request Received")
     res = parser_handler(req)
     print("[+] Response Built")
-    # print(res)
+    print(res)
     comms.send(conn, res.__str__())
     print("[+] Response Sent")
     return

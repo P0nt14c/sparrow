@@ -49,6 +49,7 @@ class Request:
     
 
 def parse(req: str) -> (int, Request):
+    print(req)
     # split metadata and body
     req_data = req.split("\r\n\r\n")  
 
@@ -59,7 +60,10 @@ def parse(req: str) -> (int, Request):
     page = ""
     version = ""
     headers = dict()
-    body = req_data[1]
+    try:
+        body = req_data[1]
+    except IndexError:
+        body = ""
 
     i = 0 
     for line in req_lines:
