@@ -59,13 +59,12 @@ def handle_php(request: request.Request) -> response.Response:
     request.page = request.page.lstrip("/")
     page = os.path.join("pages", request.page)
 
-    query = page.split("?")[1]
-    page = page.split("?")[0]
+
 
     params = {}
-    for param in query.split('&'):
-        key, value = param.split('=')
-        params[key] = value
+    for param in request.data.split('&'):
+            key, value = param.split('=')
+            params[key] = value
     
     php_cmd = ["pgp-cgi", "-f", page]
     if params:
