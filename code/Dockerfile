@@ -11,4 +11,4 @@ COPY . /app
 RUN apt-get update && apt-get install -y python3
 
 # Define the command to run the Python file named sparrow.py
-CMD ["python3", "sparrow.py"]
+CMD ["python3", "sparrow.py", "0.0.0.0", "443"]
