@@ -2,6 +2,7 @@
 # Author: Jason Howe
 # Receives HTTP requests
 
+import os
 
 class Request:
     """ Request Class
@@ -29,7 +30,7 @@ class Request:
     body = str
 
 
-    def __init__(self, method: str, page: str, version: str, headers: list, body: str):
+    def __init__(self, method: str, page: str, version: str, headers: dict, body: str):
         self.method = method
         self.page = page
         self.version = version
@@ -47,32 +48,36 @@ class Request:
     
 
 def parse(req: str) -> (int, Request):
-    req_lines = req.split("\r\n")
-    
+    # split metadata and body
+    req_data = req.split("\r\n\r\n")  
+
+    # create list to iterate thru
+    req_lines = req_data[0].split("\r\n")
 
     method = ""
     page = ""
     version = ""
-    headers = list()
-    b_data = ""
+    headers = dict()
+    body = req_data[1]
 
     i = 0 
-    body = False
     for line in req_lines:
         if i == 0:
             try: 
                 method = line.split(" ")[0]
+                # print("method:", method)
                 page = line.split(" ")[1]
+                # print("page:", page)
                 version = line.split(" ")[2]
+                # print("version:", version)
             except Exception:
                 return (1, None)
-        elif line == "\r\n":
-            body = True
-        elif not body:
+        else:
+            # print("header line:", line)
             head = line.split(":")
+            if head == "":
+                continue
             headers[head[0]] = head[1]
-        elif body:
-            b_data += line
 
         i += 1
 
@@ -83,7 +88,7 @@ def parse(req: str) -> (int, Request):
         headers,
         body
     )
-    
+    print(request)
     return (0, request)
 
 
@@ -129,15 +134,13 @@ def validate_version(version: str) -> bool:
         return False
     
 
-def validate_page(page: str, pages: list) -> bool:
+def validate_page(page: str) -> bool:
     """ Validates the Page in the HTTP Request
 
     Paramters
     --------
     page : str
         the method to validate
-    pages : list
-        the list of pages served
 
     Returns
     -------
@@ -145,7 +148,9 @@ def validate_page(page: str, pages: list) -> bool:
         True if the page exists
         False if not
     """ 
-    if page in pages:
+    pages = os.listdir("pages")
+    pages = [file for file in pages if os.path.isfile(os.path.join("pages", file))]
+    if page.lstrip("/") in pages:  
         return True
     else:
         return False

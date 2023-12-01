@@ -33,11 +33,11 @@ class Log:
     res = dict
     time = str
 
-    def __init__(self, type: str, req: request.Request, res: response.response) -> None:
+    def __init__(self, type: str, req: request.Request, res: response.Response) -> None:
         self.type = type
         self.req = req
         self.res = res
-        self.time = datetime.datetime.now()
+        self.time = str(datetime.datetime.now())
 
     def to_dict(self) -> dict:
         d = {}
@@ -75,7 +75,7 @@ def init_logger() -> bool:
         return False
 
 
-def log(type: str, req: request.Request, res: response.response):
+def log(type: str, req: request.Request, res: response.Response):
     """ Logs Requests and Response 
 
     Paramters
@@ -104,7 +104,7 @@ def log(type: str, req: request.Request, res: response.response):
     # write log to file
     if type == "GOOD":
         with open("../log/good.txt", "+a") as logfile:
-            logfile.write(log)
+            logfile.write(json_log)
     else:
         with open("../log/bad.txt", "+a") as logfile:
-            logfile.write(log)
+            logfile.write(json_log)

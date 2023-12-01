@@ -40,7 +40,9 @@ class Response:
     def __str__(self):
         resp =  self.version + " " + self.code + "\r\n"
         for key in self.headers:
-            resp += key.upper() + ": " + self.headers[key] + "\r\n"
+            print(key)
+            print(self.headers[key])
+            resp += str(key.upper()) + ": " + str(self.headers[key]) + "\r\n"
         resp += "\r\n"
         resp += self.body
         return resp
@@ -59,6 +61,7 @@ def return_200() -> Response:
     resp_headers["Server: "] = "Sparrow"
     resp_headers["Date: "] = datetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S %Z")
     resp_headers["Content-type: "] = "text/plain"
+    resp_headers["Connection"] = "close"
     body = "Sparrow OK"
     resp = Response("200 OK", "HTTP/1.1", resp_headers, body)
     return resp
@@ -75,6 +78,7 @@ def return_201() -> Response:
     resp_headers["Server: "] = "Sparrow"
     resp_headers["Date: "] = datetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S %Z")
     resp_headers["Content-type: "] = "text/plain"
+    resp_headers["Connection"] = "close"
     body = "Sparrow OK"
     resp = Response("201 Created", "HTTP/1.1", resp_headers, body)
     return resp
@@ -93,6 +97,7 @@ def return_400() -> Response:
     resp_headers["Server: "] = "Sparrow"
     resp_headers["Date: "] = datetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S %Z")
     resp_headers["Content-type: "] = "text/plain"
+    resp_headers["Connection"] = "close"
     body = "Sparrow Bad Request"
     resp = Response("400 Bad Request", "HTTP/1.1", resp_headers, body)
     return resp
@@ -110,6 +115,7 @@ def return_403() -> Response:
     resp_headers["Server: "] = "Sparrow"
     resp_headers["Date: "] = datetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S %Z")
     resp_headers["Content-type: "] = "text/plain"
+    resp_headers["Connection"] = "close"
     body = "Sparrow OK. Client Bad Request"
     resp = Response("403 Forbidden", "HTTP/1.1", resp_headers, body)
     return resp
@@ -128,6 +134,7 @@ def return_404() -> Response:
     resp_headers["Server: "] = "Sparrow"
     resp_headers["Date: "] = datetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S %Z")
     resp_headers["Content-type: "] = "text/plain"
+    resp_headers["Connection"] = "close"
     body = "Sparrow OK. Client Bad Request"
     resp = Response("404 Not Found", "HTTP/1.1", resp_headers, body)
     return resp
@@ -145,6 +152,7 @@ def return_411() -> Response:
     resp_headers["Server: "] = "Sparrow"
     resp_headers["Date: "] = datetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S %Z")
     resp_headers["Content-type: "] = "text/plain"
+    resp_headers["Connection"] = "close"
     body = "Sparrow OK. Client Bad Request"
     resp = Response("411 Length Required", "HTTP/1.1", resp_headers, body)
     return resp
@@ -163,6 +171,7 @@ def return_500() -> Response:
     resp_headers["Server: "] = "Sparrow"
     resp_headers["Date: "] = datetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S %Z")
     resp_headers["Content-type: "] = "text/plain"
+    resp_headers["Connection"] = "close"
     body = "Sparrow Internal Server Error"
     resp = Response("500 Internal Server Error", "HTTP/1.1", resp_headers, body)
     return resp
@@ -181,6 +190,7 @@ def return_501() -> Response:
     resp_headers["Server: "] = "Sparrow"
     resp_headers["Date: "] = datetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S %Z")
     resp_headers["Content-type: "] = "text/plain"
+    resp_headers["Connection"] = "close"
     body = "Sparrow Internal Server Error"
     resp = Response("501 Not Implemented", "HTTP/1.1", resp_headers, body)
     return resp
@@ -198,6 +208,7 @@ def return_505() -> Response:
     resp_headers["Server: "] = "Sparrow"
     resp_headers["Date: "] = datetime.datetime.now().strftime("%a, %d %b %Y %H:%M:%S %Z")
     resp_headers["Content-type: "] = "text/plain"
+    resp_headers["Connection"] = "close"
     body = "Sparrow Internal Server Error"
     resp = Response("505 HTTP Version Not Supported", "HTTP/1.1", resp_headers, body)
     return resp

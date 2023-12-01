@@ -15,28 +15,39 @@ from cryptography.hazmat.primitives.asymmetric import dsa
 
 def create_socket() -> socket.socket:
     conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    conn.connect((config.IP, config.PORT))
+    conn.bind((config.IP, config.PORT))
+    conn.listen(10)
     return conn
     
 
 def create_secure_socket() -> socket.socket:
     conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    context = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
+    context = ssl.SSLContext()
     context.verify_mode=ssl.CERT_NONE
     context.load_cert_chain(config.CERTFILE, config.KEYFILE, password=None)
-    conn = context.wrap_socket(conn, server_hostname="Sparrow", server_side=True)
-    conn.connect((config.IP, config.PORT))
+    conn = context.wrap_socket(conn, server_side=True)
+    conn.bind((config.IP, config.PORT))
+    conn.listen(10)
     return conn
 
 
 def recieve(conn: socket.socket) -> str:
-    d = ""
-    data = conn.recv(8192).decode()
-    while data != "":
-        d += data
-        data = conn.recv(8192).decode()
-    conn.close()
+    try: 
+        conn.settimeout(2)
+        d = ""
+        while True:
+            chunk = conn.recv(1024).decode()
+            if not chunk:
+                break
+            d += chunk
+    except:
+        pass
     return d
+
+
+def send(conn: socket.socket, response: str) -> str:
+    conn.sendall(response.encode())
+    conn.close()
 
 
 def parse_certs():
