@@ -1,7 +1,8 @@
 ---
 
 - name: SPARROW
-  hosts: sparrow
+  hosts: localhost
+  become: yes
   roles:
     - deploy_sparrow
   tags:

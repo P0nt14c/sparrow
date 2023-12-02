@@ -62,11 +62,11 @@ def init_logger() -> bool:
     """ 
     try: 
         # delete log files
-        os.remove("../log/good.txt")
-        os.remove("../log/bad.txt")
+        os.remove("/tmp/good.txt")
+        os.remove("/tmp/bad.txt")
         # create new log files
-        goodlog = open("../log/good.txt", "x") 
-        badlog = open("../log/bad.txt", "x") 
+        goodlog = open("/tmp/good.txt", "x") 
+        badlog = open("/tmp/bad.txt", "x") 
         # close files
         goodlog.close()
         badlog.close()
@@ -103,8 +103,8 @@ def log(type: str, req: request.Request, res: response.Response):
 
     # write log to file
     if type == "GOOD":
-        with open("../log/good.txt", "+a") as logfile:
+        with open("/tmp/good.txt", "+a") as logfile:
             logfile.write(json_log)
     else:
-        with open("../log/bad.txt", "+a") as logfile:
+        with open("/tmp/bad.txt", "+a") as logfile:
             logfile.write(json_log)

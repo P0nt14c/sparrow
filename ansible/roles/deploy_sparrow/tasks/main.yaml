@@ -1,11 +1,32 @@
 ---
 
+- name: SPARROW | TOUCH TMP
+  ansible.builtin.file:
+    path: /tmp/pages_tmp
+    state: directory
+    mode: 0777
+
 - name: SPARROW | Copy Source Code
   ansible.builtin.copy: 
     src: ../../../../code/
-    dest: ~
+    dest: /tmp/
     directory_mode: true
     mode: 0777
   
-- name: SPARROW | Run Server
-  ansible.builtin.shell: python3 ~/code/sparrow.py
+- name: SPARROW | Copy Service File
+  ansible.builtin.copy:
+    src: sparrow.service
+    dest: /etc/systemd/system/
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Sparrow | Reload
+  ansible.builtin.systemd:
+    daemon_reload: yes
+
+- name: Start Sparrow Service
+  ansible.builtin.service:
+    name: sparrow
+    state: started
+    enabled: yes

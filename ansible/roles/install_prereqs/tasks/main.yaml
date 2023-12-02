@@ -1,8 +1,7 @@
 ---
 
-
 - name: PreReqs | APT
-  anisble.builtin.apt:
+  ansible.builtin.apt:
     - name: "{{item}}"
     - state: present
   with_items:

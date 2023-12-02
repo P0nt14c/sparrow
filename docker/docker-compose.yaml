@@ -13,8 +13,10 @@ services:
 
   webserver:
     build:
-      context: ../../code
-      dockerfile: Dockerfile
+      context: ../code
+      dockerfile: Dockerfile-sparrow
+    expose:
+      - "8000"
 
 volumes:
   caddy_data:

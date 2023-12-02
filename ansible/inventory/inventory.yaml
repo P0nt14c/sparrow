@@ -1,7 +1,8 @@
 ---
 all:
   children:
-    sparrow: 127.0.0.1
+    localhost: 127.0.0.1
       vars:
-        ansible_username: sparrow
-        ansible_passwd: sparrow
+          become_user: trusted
+          become_pass: trusted
+

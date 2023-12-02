@@ -1,0 +1,10 @@
+[Unit]
+Description=Sparrow
+
+[Service]
+ExecStart=/usr/bin/python3 /tmp/sparrow.py 127.0.0.1 8000
+WorkingDirectory=/tmp
+Restart=always
+
+[Install]
+WantedBy=default.target

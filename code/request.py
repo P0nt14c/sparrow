@@ -154,7 +154,7 @@ def validate_page(page: str) -> bool:
         True if the page exists
         False if not
     """ 
-    pages = os.listdir("pages")
+    pages = os.listdir("pages_tmp")
     pages = [file for file in pages if os.path.isfile(os.path.join("pages", file))]
     if page.lstrip("/") in pages:  
         return True

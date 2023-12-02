@@ -1,3 +1,0 @@
-sparrow.com {
-  reverse_proxy webserver:80
-}

@@ -21,7 +21,7 @@ def parse(request: request.Request) -> response.Response:
 
     # make path relatetive
     request.page = request.page.lstrip("/")
-    page = os.path.join("pages", request.page)
+    page = os.path.join("pages_tmp", request.page)
 
     # access/authorization -- future work
 

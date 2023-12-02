@@ -26,7 +26,7 @@ def parse(request: request.Request) -> response.Response:
 
     # make path relatetive
     request.page = request.page.lstrip("/")
-    page = os.path.join("pages", request.page)
+    page = os.path.join("pages_tmp", request.page)
 
     # access/authorization -- future work
 
@@ -79,7 +79,7 @@ def handle_php(request: request.Request) -> response.Response:
     print("[+] Parsing GET PHP")
     # make path relatetive
     request.page = request.page.lstrip("/")
-    page = os.path.join("pages", request.page)
+    page = os.path.join("pages_tmp", request.page)
 
     query = page.split("?")[1]
     page = page.split("?")[0]
