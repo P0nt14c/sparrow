@@ -155,7 +155,7 @@ def validate_page(page: str) -> bool:
         False if not
     """ 
     pages = os.listdir("pages_tmp")
-    pages = [file for file in pages if os.path.isfile(os.path.join("pages", file))]
+    pages = [file for file in pages if os.path.isfile(os.path.join("pages_tmp", file))]
     if page.lstrip("/") in pages:  
         return True
     else:
